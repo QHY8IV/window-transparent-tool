@@ -76,36 +76,36 @@ void showinfo(const char *fmt, T... args) {
 }
 
 void error(int code) {
-  alert("³ÌĞòÒì³£ÍË³ö£¬´íÎó´úÂë£º%d\n", code);
+  alert("ç¨‹åºå¼‚å¸¸é€€å‡ºï¼Œé”™è¯¯ä»£ç ï¼š%d\n", code);
   exit(code);
 }
 
 void help() {
   showinfo(
-    "Alt+Left/Right\t\t½µµÍ/Ôö¼ÓÍ¸Ã÷¶È\n"
-    "Alt+H\t\t\tÈ¡ÏûÍ¸Ã÷¶È\n"
-    "Alt+S\t\t\tÉèÖÃÍ¸Ã÷¶ÈÔöÁ¿\n"
-    "Ctrl+Alt+Left/Right/Up/Down\tÒÆ¶¯´°¿Ú\n"
-    "Ctrl+Alt+S\t\t\tÉèÖÃ´°¿ÚÒÆ¶¯²½³¤\n"
-    "Shift+Alt+Left/Right/Up/Down\tËõ·Å´°¿Ú\n"
-    "Shift+Alt+S\t\tÉèÖÃ´°¿ÚËõ·Å²½³¤\n"
-    "Alt+T\t\t\tÖÃ¶¥/È¡ÏûÖÃ¶¥´°¿Ú\n"
-    "Alt+E\t\t\tÏÔÊ¾´Ë°ïÖú\n"
-    "Alt+ESC\t\t\tÍË³ö\n");
+    "Alt+Left/Right\t\té™ä½/å¢åŠ é€æ˜åº¦\n"
+    "Alt+H\t\t\tå–æ¶ˆé€æ˜åº¦\n"
+    "Alt+S\t\t\tè®¾ç½®é€æ˜åº¦å¢é‡\n"
+    "Ctrl+Alt+Left/Right/Up/Down\tç§»åŠ¨çª—å£\n"
+    "Ctrl+Alt+S\t\t\tè®¾ç½®çª—å£ç§»åŠ¨æ­¥é•¿\n"
+    "Shift+Alt+Left/Right/Up/Down\tç¼©æ”¾çª—å£\n"
+    "Shift+Alt+S\t\tè®¾ç½®çª—å£ç¼©æ”¾æ­¥é•¿\n"
+    "Alt+T\t\t\tç½®é¡¶/å–æ¶ˆç½®é¡¶çª—å£\n"
+    "Alt+E\t\t\tæ˜¾ç¤ºæ­¤å¸®åŠ©\n"
+    "Alt+ESC\t\t\té€€å‡º\n");
 }
 
 void helpfirst() {
-  showinfo("»¶Ó­Ê¹ÓÃ C++ Ğ¡¹¤¾ß£¡\n"
-    "Alt+Left/Right\t\t½µµÍ/Ôö¼ÓÍ¸Ã÷¶È\n"
-    "Alt+H\t\t\tÈ¡ÏûÍ¸Ã÷¶È\n"
-    "Alt+S\t\t\tÉèÖÃÍ¸Ã÷¶ÈÔöÁ¿\n"
-    "Ctrl+Alt+Left/Right/Up/Down\tÒÆ¶¯´°¿Ú\n"
-    "Ctrl+Alt+S\t\t\tÉèÖÃ´°¿ÚÒÆ¶¯²½³¤\n"
-    "Shift+Alt+Left/Right/Up/Down\tËõ·Å´°¿Ú\n"
-    "Shift+Alt+S\t\tÉèÖÃ´°¿ÚËõ·Å²½³¤\n"
-    "Alt+T\t\t\tÖÃ¶¥/È¡ÏûÖÃ¶¥´°¿Ú\n"
-    "Alt+E\t\t\tÏÔÊ¾´Ë°ïÖú\n"
-    "Alt+ESC\t\t\tÍË³ö\n");
+  showinfo("æ¬¢è¿ä½¿ç”¨ C++ å°å·¥å…·ï¼\n"
+    "Alt+Left/Right\t\té™ä½/å¢åŠ é€æ˜åº¦\n"
+    "Alt+H\t\t\tå–æ¶ˆé€æ˜åº¦\n"
+    "Alt+S\t\t\tè®¾ç½®é€æ˜åº¦å¢é‡\n"
+    "Ctrl+Alt+Left/Right/Up/Down\tç§»åŠ¨çª—å£\n"
+    "Ctrl+Alt+S\t\t\tè®¾ç½®çª—å£ç§»åŠ¨æ­¥é•¿\n"
+    "Shift+Alt+Left/Right/Up/Down\tç¼©æ”¾çª—å£\n"
+    "Shift+Alt+S\t\tè®¾ç½®çª—å£ç¼©æ”¾æ­¥é•¿\n"
+    "Alt+T\t\t\tç½®é¡¶/å–æ¶ˆç½®é¡¶çª—å£\n"
+    "Alt+E\t\t\tæ˜¾ç¤ºæ­¤å¸®åŠ©\n"
+    "Alt+ESC\t\t\té€€å‡º\n");
 }
 
 int handleHotkey(int hotkey) {
@@ -120,18 +120,18 @@ int handleHotkey(int hotkey) {
     || hotkey == MV_LEFT || hotkey == MV_RIGHT || hotkey == MV_UP || hotkey == MV_DOWN
     || hotkey == MK_LEFT || hotkey == MK_RIGHT || hotkey == MK_UP || hotkey == MK_DOWN) {
     if ((hActiveWindow = GetForegroundWindow()) == NULL) {
-      alert("GetForegroundWindow µ÷ÓÃÊ§°Ü£¡´íÎó´úÂë£º%d\n", int(GetLastError()));
+      alert("GetForegroundWindow è°ƒç”¨å¤±è´¥ï¼é”™è¯¯ä»£ç ï¼š%d\n", int(GetLastError()));
       return 0;
     }
   }
 
   if (hotkey == INC_ALPHA || hotkey == DEC_ALPHA) {
     if (!SetWindowLong(hActiveWindow, GWL_EXSTYLE, GetWindowLong(hActiveWindow, GWL_EXSTYLE) | WS_EX_LAYERED)) {
-      alert("SetWindowLong µ÷ÓÃÊ§°Ü£¡´íÎó´úÂë£º%d\n", int(GetLastError()));
+      alert("SetWindowLong è°ƒç”¨å¤±è´¥ï¼é”™è¯¯ä»£ç ï¼š%d\n", int(GetLastError()));
       return 0;
     } DWORD flag;
     if (!GetLayeredWindowAttributes(hActiveWindow, NULL, &alpha, &flag)) {
-      alert("GetLayeredWindowAttributes µ÷ÓÃÊ§°Ü£¡´íÎó´úÂë£º%d\n", int(GetLastError()));
+      alert("GetLayeredWindowAttributes è°ƒç”¨å¤±è´¥ï¼é”™è¯¯ä»£ç ï¼š%d\n", int(GetLastError()));
       return 0;
     } if (!(flag & LWA_ALPHA)) {
       SetLayeredWindowAttributes(hActiveWindow, 0, alpha = 255, LWA_ALPHA);
@@ -141,7 +141,7 @@ int handleHotkey(int hotkey) {
   if (hotkey == MV_LEFT || hotkey == MV_RIGHT || hotkey == MV_UP || hotkey == MV_DOWN
     || hotkey == MK_LEFT || hotkey == MK_RIGHT || hotkey == MK_UP || hotkey == MK_DOWN) {
     if (!GetWindowRect(hActiveWindow, &rect)) {
-      alert("GetWindowRect µ÷ÓÃÊ§°Ü£¡´íÎó´úÂë£º%d\n", int(GetLastError()));
+      alert("GetWindowRect è°ƒç”¨å¤±è´¥ï¼é”™è¯¯ä»£ç ï¼š%d\n", int(GetLastError()));
     }
   }
 
@@ -149,7 +149,7 @@ int handleHotkey(int hotkey) {
     if (alpha >= 255 - ALPHA_STEP) alpha = 255;
     else alpha = alpha + ALPHA_STEP;
     if (!SetLayeredWindowAttributes(hActiveWindow, 0, alpha, LWA_ALPHA)) {
-      alert("SetLayeredWindowAttributes µ÷ÓÃÊ§°Ü£¡´íÎó´úÂë£º%d\n", int(GetLastError()));
+      alert("SetLayeredWindowAttributes è°ƒç”¨å¤±è´¥ï¼é”™è¯¯ä»£ç ï¼š%d\n", int(GetLastError()));
       return 0;
     } return 0;
   }
@@ -158,22 +158,22 @@ int handleHotkey(int hotkey) {
     if (alpha <= ALPHA_STEP) alpha = 0;
     else alpha = alpha - ALPHA_STEP;
     if (!SetLayeredWindowAttributes(hActiveWindow, 0, alpha, LWA_ALPHA)) {
-      alert("SetLayeredWindowAttributes µ÷ÓÃÊ§°Ü£¡´íÎó´úÂë£º%d\n", int(GetLastError()));
+      alert("SetLayeredWindowAttributes è°ƒç”¨å¤±è´¥ï¼é”™è¯¯ä»£ç ï¼š%d\n", int(GetLastError()));
       return 0;
     } return 0;
   }
 
   if (hotkey == SET_STEP) {
-    showinfo("¹¦ÄÜÉĞÎ´¿ª·¢£¬¾´ÇëÆÚ´ı¡£");
+    showinfo("åŠŸèƒ½å°šæœªå¼€å‘ï¼Œæ•¬è¯·æœŸå¾…ã€‚");
     return 0;
   }
 
   if (hotkey == ERASE_ALPHA) {
     if (!SetWindowLong(hActiveWindow, GWL_EXSTYLE, GetWindowLong(hActiveWindow, GWL_EXSTYLE) & ~WS_EX_LAYERED)) {
-      alert("SetWindowLong µ÷ÓÃÊ§°Ü£¡´íÎó´úÂë£º%d\n", int(GetLastError()));
+      alert("SetWindowLong è°ƒç”¨å¤±è´¥ï¼é”™è¯¯ä»£ç ï¼š%d\n", int(GetLastError()));
       return 0;
     } if (!RedrawWindow(hActiveWindow, NULL, NULL, RDW_ERASE | RDW_INVALIDATE | RDW_FRAME | RDW_ALLCHILDREN)) {
-      alert("RedrawWindow µ÷ÓÃÊ§°Ü£¡´íÎó´úÂë£º%d\n", int(GetLastError()));
+      alert("RedrawWindow è°ƒç”¨å¤±è´¥ï¼é”™è¯¯ä»£ç ï¼š%d\n", int(GetLastError()));
       return 0;
     }
   }
@@ -183,7 +183,7 @@ int handleHotkey(int hotkey) {
     memset(&info, 0, sizeof(info));
     info.cbSize = sizeof(WINDOWINFO);
     if (!GetWindowInfo(hActiveWindow, &info)) {
-      alert("GetWindowInfo µ÷ÓÃÊ§°Ü£¡´íÎó´úÂë£º%d\n", int(GetLastError()));
+      alert("GetWindowInfo è°ƒç”¨å¤±è´¥ï¼é”™è¯¯ä»£ç ï¼š%d\n", int(GetLastError()));
       return 0;
     } if (info.dwExStyle & WS_EX_TOPMOST) {
       SetWindowPos(hActiveWindow, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
@@ -233,12 +233,12 @@ int handleHotkey(int hotkey) {
   }
 
   if (hotkey == MV_SET_STEP) {
-    showinfo("¹¦ÄÜÉĞÎ´¿ª·¢£¬¾´ÇëÆÚ´ı¡£");
+    showinfo("åŠŸèƒ½å°šæœªå¼€å‘ï¼Œæ•¬è¯·æœŸå¾…ã€‚");
     return 0;
   }
 
   if (hotkey == MK_SET_STEP) {
-    showinfo("¹¦ÄÜÉĞÎ´¿ª·¢£¬¾´ÇëÆÚ´ı¡£");
+    showinfo("åŠŸèƒ½å°šæœªå¼€å‘ï¼Œæ•¬è¯·æœŸå¾…ã€‚");
     return 0;
   }
 
@@ -247,7 +247,7 @@ int handleHotkey(int hotkey) {
   }
 
   if (hotkey == QUIT) {
-    showinfo("C++ Ğ¡¹¤¾ßÒÑÍË³ö£¬¸ĞĞ»ÄãµÄÊ¹ÓÃ¡£\n");
+    showinfo("C++ å°å·¥å…·å·²é€€å‡ºï¼Œæ„Ÿè°¢ä½ çš„ä½¿ç”¨ã€‚\n");
     return 1;
   }
 
@@ -257,7 +257,7 @@ int handleHotkey(int hotkey) {
 int main(int argc, char** argv) {
 
   switch (ManagerRun()) {
-    case 0: alert("ÇëÒÔ¹ÜÀíÔ±Éí·İÔËĞĞ£¡\n");
+    case 0: alert("è¯·ä»¥ç®¡ç†å‘˜èº«ä»½è¿è¡Œï¼\n");
     case 1: return 0;
     default: break;
   }
