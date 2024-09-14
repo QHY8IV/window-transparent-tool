@@ -1,6 +1,5 @@
 #include <windows.h>
 #include <cstdio>
-#include <unordered_set>
 
 bool IsProcessRunAsAdmin() {
   SID_IDENTIFIER_AUTHORITY NtAuthority = SECURITY_NT_AUTHORITY;
