@@ -1,5 +1,5 @@
 windres -i test.rc -o test.o
 
-g++ test.cpp test.o -o "C++ Ğ¡¹¤¾ß" -mwindows
+g++ main.cpp test.o -o "C++ ÃÂ¡Â¹Â¤Â¾ÃŸ" -mwindows
 
 pause
