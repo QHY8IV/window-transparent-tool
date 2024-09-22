@@ -43,6 +43,7 @@ enum {
   DEC_ALPHA,
   SET_STEP,
   ERASE_ALPHA,
+  CLR_ALPHA,
   SET_TOP,
   MV_LEFT,
   MV_RIGHT,
@@ -83,6 +84,7 @@ void help() {
   showinfo(
     "Alt+Left/Right\t\t降低/增加透明度\n"
     "Alt+H\t\t\t取消透明度\n"
+    "Alt+V\t\t\t设置成完全透明\n"
     "Alt+S\t\t\t设置透明度增量\n"
     "Ctrl+Alt+Left/Right/Up/Down\t移动窗口\n"
     "Ctrl+Alt+S\t\t\t设置窗口移动步长\n"
@@ -97,6 +99,7 @@ void helpfirst() {
   showinfo("欢迎使用 C++ 小工具！\n"
     "Alt+Left/Right\t\t降低/增加透明度\n"
     "Alt+H\t\t\t取消透明度\n"
+    "Alt+V\t\t\t设置成完全透明\n"
     "Alt+S\t\t\t设置透明度增量\n"
     "Ctrl+Alt+Left/Right/Up/Down\t移动窗口\n"
     "Ctrl+Alt+S\t\t\t设置窗口移动步长\n"
@@ -115,7 +118,7 @@ int handleHotkey(int hotkey) {
   BYTE alpha;
   RECT rect;
 
-  if (hotkey == INC_ALPHA || hotkey == DEC_ALPHA || hotkey == ERASE_ALPHA || hotkey == SET_TOP
+  if (hotkey == INC_ALPHA || hotkey == DEC_ALPHA || hotkey == ERASE_ALPHA || hotkey == CLR_ALPHA || hotkey == SET_TOP
     || hotkey == MV_LEFT || hotkey == MV_RIGHT || hotkey == MV_UP || hotkey == MV_DOWN
     || hotkey == MK_LEFT || hotkey == MK_RIGHT || hotkey == MK_UP || hotkey == MK_DOWN) {
     if ((hActiveWindow = GetForegroundWindow()) == NULL) {
@@ -124,7 +127,7 @@ int handleHotkey(int hotkey) {
     }
   }
 
-  if (hotkey == INC_ALPHA || hotkey == DEC_ALPHA) {
+  if (hotkey == INC_ALPHA || hotkey == DEC_ALPHA || hotkey == CLR_ALPHA) {
     if (!SetWindowLong(hActiveWindow, GWL_EXSTYLE, GetWindowLong(hActiveWindow, GWL_EXSTYLE) | WS_EX_LAYERED)) {
       alert("SetWindowLong 调用失败！错误代码：%d\n", int(GetLastError()));
       return 0;
@@ -157,6 +160,13 @@ int handleHotkey(int hotkey) {
     if (alpha <= ALPHA_STEP) alpha = 0;
     else alpha = alpha - ALPHA_STEP;
     if (!SetLayeredWindowAttributes(hActiveWindow, 0, alpha, LWA_ALPHA)) {
+      alert("SetLayeredWindowAttributes 调用失败！错误代码：%d\n", int(GetLastError()));
+      return 0;
+    } return 0;
+  }
+
+  if (hotkey == CLR_ALPHA) {
+    if (!SetLayeredWindowAttributes(hActiveWindow, 0, 0, LWA_ALPHA)) {
       alert("SetLayeredWindowAttributes 调用失败！错误代码：%d\n", int(GetLastError()));
       return 0;
     } return 0;
@@ -267,6 +277,7 @@ int main(int argc, char** argv) {
     || !RegisterHotKey(NULL, DEC_ALPHA, MOD_ALT, VK_LEFT)
     || !RegisterHotKey(NULL, SET_STEP, MOD_ALT, 'S')
     || !RegisterHotKey(NULL, ERASE_ALPHA, MOD_ALT, 'H')
+    || !RegisterHotKey(NULL, CLR_ALPHA, MOD_ALT, 'V')
     || !RegisterHotKey(NULL, SET_TOP, MOD_ALT, 'T')
     || !RegisterHotKey(NULL, MV_LEFT, MOD_CONTROL | MOD_ALT, VK_LEFT)
     || !RegisterHotKey(NULL, MV_RIGHT, MOD_CONTROL | MOD_ALT, VK_RIGHT)
@@ -298,6 +309,7 @@ int main(int argc, char** argv) {
     || !UnregisterHotKey(NULL, DEC_ALPHA)
     || !UnregisterHotKey(NULL, SET_STEP)
     || !UnregisterHotKey(NULL, ERASE_ALPHA)
+    || !UnregisterHotKey(NULL, CLR_ALPHA)
     || !UnregisterHotKey(NULL, SET_TOP)
     || !UnregisterHotKey(NULL, MV_LEFT)
     || !UnregisterHotKey(NULL, MV_RIGHT)
